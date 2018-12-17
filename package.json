@@ -1,0 +1,22 @@
+{
+  "name": "sugipaymentrequestexpress",
+  "version": "0.0.1",
+  "description": "Backend for Sugi payment request page with tamplates genration on mustache-express.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielkolesnik/sugi-payment-request-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielkolesnik/sugi-payment-request-express/issues"
+  },
+  "homepage": "https://github.com/danielkolesnik/sugi-payment-request-express#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
