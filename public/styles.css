@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #faeee4;
+}
+.page-wrapper {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-wrapper .dialog {
+  min-width: 360px;
+  min-height: 616px;
+  box-shadow: 0 4px 8px rgba(44, 40, 35, 0.12);
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #FFFFFF;
+  color: #382A2C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*
+        Displaying the ID of the wallet depending on the type.
+    */
+}
+.page-wrapper .dialog .headline {
+  text-align: center;
+  font-size: 1.25em;
+  margin: 24px 0 0;
+  padding: 16px 0;
+  font-weight: 500;
+}
+.page-wrapper .dialog #walletIdentifier {
+  text-align: center;
+  font-size: 18px;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: auto;
+}
+.page-wrapper .dialog #qrCode {
+  height: 220px;
+  width: 220px;
+  margin: 16px 0;
+  background: #FFFFFF;
+}
+.page-wrapper .dialog #qrCode .dummy-qr-code {
+  background: url('assets/images/qr-code-example.png') no-repeat;
+  width: 100%;
+  height: 100%;
+}
+.page-wrapper .dialog .amount-wrapper {
+  font-size: 20px;
+  word-spacing: 3px;
+  padding: 16px 0;
+}
+.page-wrapper .dialog .store-btns-wrapper {
+  margin: 16px 0;
+  border: 1px solid #382A2C;
+  position: relative;
+  border-radius: 8px;
+  min-width: 80%;
+  padding: 16px;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+}
+.page-wrapper .dialog .store-btns-wrapper .store-btns-headline {
+  position: absolute;
+  top: -8px;
+  background-color: #FFFFFF;
+  padding: 0 15px;
+}
+.page-wrapper .dialog .store-btns-wrapper a {
+  display: block;
+  width: auto;
+  height: auto;
+  text-decoration: none;
+}
+.page-wrapper .dialog .store-btns-wrapper a img {
+  width: 120px;
+  height: auto;
+}
+.page-wrapper .dialog .other-wallet-btn {
+  display: none;
+  color: #382A2C;
+  text-decoration: none;
+  border: 1px solid #382A2C;
+  border-radius: 4px;
+  padding: 10px;
+}
+.page-wrapper .dialog.eur #walletIdentifier span:not(:nth-child(1)) {
+  padding-left: 12px;
+}
+.page-wrapper .dialog.eur #walletIdentifier span:not(:nth-child(4)) {
+  padding-right: 12px;
+}
+.page-wrapper .dialog.eur #amount:after {
+  content: ' EUR';
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+.page-wrapper .dialog.btc #walletIdentifier span:first-child,
+.page-wrapper .dialog.eth #walletIdentifier span:first-child {
+  padding: 0;
+}
+.page-wrapper .dialog.btc #walletIdentifier span:not(:first-child),
+.page-wrapper .dialog.eth #walletIdentifier span:not(:first-child) {
+  display: none;
+}
+.page-wrapper .dialog.btc .other-wallet-btn,
+.page-wrapper .dialog.eth .other-wallet-btn {
+  display: block;
+}
+.page-wrapper .dialog.eth #amount:after {
+  content: ' ETH';
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+.page-wrapper .dialog.btc #amount:after {
+  content: ' BTC';
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
