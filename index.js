@@ -1,17 +1,22 @@
-// import modules
+// outsource modules
+var path = require('path');
 var express = require('express');
+var config = require('./environment');
+var mustacheExpress = require('mustache-express');
+// local modules
+var initRouter = require('./router');
 
 // declare global variables
 var app = express();
+// setup static resources
+app.use(express.static(path.join(__dirname, 'public')));
+// NOTE setup routing
+initRouter(app);
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-app.get('/pay/:cardId', function (req, res) {
-  res.send("Value of param is " + req.params.cardId
-    + "\n" + "amount: " + req.query.amount
-    + "\ncurrency:" + req.query.currency);
-});
+// Register '.mustache' extension with The Mustache Express
+app.engine('mustache', mustacheExpress());
+app.set('view engine', 'mustache');
+app.set('views', path.join(__dirname, 'views'));
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
