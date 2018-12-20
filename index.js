@@ -8,7 +8,7 @@ var initRouter = require('./router');
 
 // declare global variables
 var app = express();
-// NOTE setup static resources
+// setup static resources
 app.use(express.static(path.join(__dirname, 'public')));
 // NOTE setup routing
 initRouter(app);

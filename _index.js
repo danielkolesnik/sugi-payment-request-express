@@ -1,14 +1,13 @@
 // import modules
+var path = require('path');
 var express = require('express');
 var mustacheExpress = require('mustache-express');
-
 
 // declare global variables
 var app = express();
 
-
-app.use(express.static(__dirname + '/public'));
-
+// setup static resources
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Register '.mustache' extension with The Mustache Express
 app.engine('mustache', mustacheExpress());
@@ -16,52 +15,70 @@ app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
 
-app.get('/pay/:walletId', function (req, res) {
-  var amount = req.query.amount || '',
-    currency = req.query.currency || '',
-    walletId = req.params.walletId || '';
+app.get('/pay/:walletId', function (request, response) {
+  var amount = request.query.amount,
+    currency = request.query.currency,
+    walletId = request.params.walletId,
+    currencyType = (currency || '').toUpperCase(),
+    data = {},
+    amountValidation = parseFloat(amount) || -1;
 
-  switch (currency.toUpperCase()) {
+  switch( currencyType ) {
     case 'EUR':
-      res.render('index', {
+      data = {
+        walletId: walletId,
         currencyType: 'eur',
-        walletIdPt1: walletId.slice(0, 4),
-        walletIdPt2: walletId.slice(4, 8),
-        walletIdPt3: walletId.slice(8, 12),
-        walletIdPt4: walletId.slice(12, 16),
         amount: amount,
-        currency: currency,
-        linkToOtherWallet: 'https://sugi.io' + req.originalUrl
-      });
+        currency: currencyType,
+        error: false,
+        errorMessage: ''
+      };
       break;
     case 'BTC':
-      res.render('index', {
+      data = {
         currencyType: 'btc',
-        walletIdPt1: walletId,
-        walletIdPt2: '',
-        walletIdPt3: '',
-        walletIdPt4: '',
+        walletId: walletId,
         amount: amount,
-        currency: currency,
-        linkToOtherWallet: 'bitcoin:' + walletId + '?amount\=' + amount
-      });
-      console.log('bitcoin:' + walletId + '?amount=' + amount);
+        currency: currencyType,
+        error: false,
+        errorMessage: ''
+      };
       break;
     case 'ETH':
-      res.render('index', {
+      data = {
         currencyType: 'eth',
-        walletIdPt1: walletId,
-        walletIdPt2: '',
-        walletIdPt3: '',
-        walletIdPt4: '',
+        walletId: walletId,
         amount: amount,
-        currency: currency,
-        linkToOtherWallet: 'ethereum:' + walletId + '?value=' + amount + 'e18'
-      });
-      console.log('ethereum:' + walletId + '?value=' + amount + 'e18');
+        currency: currencyType,
+        error: false,
+        errorMessage: ''
+      };
       break;
     default:
+      data = {
+        currencyType: 'error',
+        walletId: walletId,
+        amount: amount,
+        currency: currencyType,
+        error: true,
+        errorType: 'CURRENCY'
+      }
   }
+
+
+  if(amountValidation <= 0) {
+    data = {
+      currencyType: 'error',
+      walletId: walletId,
+      amount: amount,
+      currency: currencyType,
+      error: true,
+      errorType: 'AMOUNT'
+    }
+  }
+
+  // NOTE compile view using mustache-express
+  response.render('pay', data);
 });
 
 app.listen(3000, function () {
