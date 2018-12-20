@@ -67,9 +67,10 @@
 <!--<script type="text/javascript" src="script.js"></script>-->
 <script type="text/javascript" src="/qrcode.min.js"></script>
 <script type="text/javascript">
+    console.log('{{linkToOtherWallet}}');
     document.addEventListener("DOMContentLoaded", function(event){
         new QRCode(document.getElementById("qrCode"), {
-            text: "{{linkToOtherWallet}}",
+            text: '{{linkToOtherWallet}}',
             width: 220,
             height: 220,
             colorDark : "#000000",

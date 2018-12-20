@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic"
+          rel="stylesheet"
+    >
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- some content on the page displayed depending on class e.g. eth | btc | eur -->
+    <main class="dialog light {{currencyType}}">
+        <div id="errorMessage"><img src="/alert-box.svg" alt="Error"><p></p></div>
+        <h1 class="headline">Payment request</h1>
+        <div id="walletIdentifier">
+            <span>
+            </span>
+            <span>
+            </span>
+            <span>
+            </span>
+            <span>
+            </span>
+        </div>
+        <div id="qrCode">
+        </div>
+        <div class="amount-wrapper">
+            <span id="amount">{{amount}}</span>
+        </div>
+        <section class="store-btns-wrapper">
+                <span class="store-btns-headline">
+                    install Sugi wallet
+                </span>
+            <a href="#">
+                <img src="/appstore.png"
+                     alt="Download Sugi wallet on the AppStore"
+                     title="Download Sugi wallet on the AppStore"
+                     class="store-btn"
+                >
+            </a>
+            <a href="#">
+                <img src="/googleplay.png"
+                     alt="Get Sugi wallet on Google Play"
+                     title="Get Sugi wallet on Google Play"
+                     class="store-btn"
+                >
+            </a>
+        </section>
+        <a id="otherWallet"
+           href=''
+           class="other-wallet-btn"
+           title="Open in alternative wallet"
+        >
+            Open in other wallet
+        </a>
+    </main>
+</div>
+
+<!--<script type="text/javascript" src="script.js"></script>-->
+<script type="text/javascript" src="/qrcode.min.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function (event) {
+        // injecting error message on page
+        if ('{{{error}}}' === 'true') {
+            // will contain error message
+            var errorOutput = '';
+            switch ('{{{errorType}}}') {
+                case 'CURRENCY':
+                    errorOutput = 'It seems to be the wrong currency in this request. Sorry, we can\'t provide payment with "{{{currency}}}" currency.';
+                    break;
+                case 'AMOUNT':
+                    errorOutput = 'It seems to be the wrong amount of "{{{currency}}}" in this request. Sorry, we can\'t provide payment of {{{amount}}} amount.';
+                    break;
+                default:
+                    // errorOutput = 'Sorry, the service is now temporarily unavailable... At the moment, work on this is ongoing, and we will fix it soon.';
+            }
+            document.querySelector('#errorMessage p').innerText = errorOutput;
+        } else {
+            // add walletId on page
+            if ('{{{currencyType}}}' === 'eur') {
+                document.querySelector('#walletIdentifier')
+                        .getElementsByTagName('span')[0].innerText = '{{{walletId}}}'.slice(0, 4);
+                document.querySelector('#walletIdentifier')
+                        .getElementsByTagName('span')[1].innerText = '{{{walletId}}}'.slice(4, 8);
+                document.querySelector('#walletIdentifier')
+                        .getElementsByTagName('span')[2].innerText = '{{{walletId}}}'.slice(8, 12);
+                document.querySelector('#walletIdentifier')
+                        .getElementsByTagName('span')[3].innerText = '{{{walletId}}}'.slice(12, 16);
+            } else {
+                document.querySelector('#walletIdentifier').getElementsByTagName('span')[0].innerText = '{{{walletId}}}';
+            }
+            // creating link for qr code
+            var currencyName = '{{{currencyType}}}' == 'btc' ? 'bitcoin' :
+                    '{{{currencyType}}}' == 'eth' ? 'ethereum' : 'euro';
+            var linkPostfix = currencyName === 'ethereum' ? '?value={{{amount}}}e18' : '?amount={{{amount}}}';
+            var linkToOtherWallet = currencyName == 'euro' ? 'https://sugi.io/pay/{{{walletId}}}?amount={{{amount}}}&currency={{{currency}}}' :
+                    currencyName + ':{{{walletId}}}' + linkPostfix;
+            // add qrCode on page
+            new QRCode(document.getElementById("qrCode"), {
+                text: linkToOtherWallet,
+                width: 220,
+                height: 220,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            document.getElementById('otherWallet').setAttribute('href', linkToOtherWallet);
+        }
+    });
+</script>
+</body>
+</html>
