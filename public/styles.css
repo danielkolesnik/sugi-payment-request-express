@@ -1,508 +1,480 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #faeee4;
+  font-family: 'Roboto', sans-serif;
+  background-color: #faeee4;
 }
 @media (max-width: 320px) {
-    body {
-        background-color: #FFFFFF;
-    }
+  body {
+    background-color: #FFFFFF;
+  }
 }
 .btn-animated {
-    transition: color 60ms linear, background-color 60ms linear, fill 60ms linear, 60ms opacity linear;
+  transition: color 60ms linear, background-color 60ms linear, fill 60ms linear, 60ms opacity linear;
 }
 .page-wrapper {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
 }
 @media (min-width: 1280px) {
-    .page-wrapper {
-        padding-top: 80px;
-    }
+  .page-wrapper {
+    padding: 100px 0;
+  }
 }
 @media (max-width: 1280px) {
-    .page-wrapper {
-        padding-top: 80px;
-    }
+  .page-wrapper {
+    padding: 100px 0;
+  }
 }
 @media (max-width: 1024px) {
-    .page-wrapper {
-        padding-top: 64px;
-    }
+  .page-wrapper {
+    padding: 90px 0;
+  }
+}
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 90px 0;
+  }
 }
 @media (max-width: 375px) {
-    .page-wrapper {
-        padding-top: 48px;
-    }
+  .page-wrapper {
+    padding: 70px 0;
+  }
 }
 @media (max-width: 320px) {
-    .page-wrapper {
-        display: block;
-    }
+  .page-wrapper {
+    padding-top: 40px;
+    padding-bottom: 0;
+    display: block;
+  }
+}
+.page-wrapper #errorMessage {
+  display: none;
+  text-align: center;
+}
+.page-wrapper #errorMessage img {
+  width: 100px;
+  height: auto;
+}
+.page-wrapper #errorMessage.active {
+  display: block;
 }
 .page-wrapper .header {
-    background-color: #FFFFFF;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
+  background-color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
 }
 @media (min-width: 1280px) {
-    .page-wrapper .header {
-        height: 80px;
-    }
+  .page-wrapper .header {
+    height: 80px;
+  }
 }
 @media (max-width: 1280px) {
-    .page-wrapper .header {
-        height: 80px;
-    }
+  .page-wrapper .header {
+    height: 80px;
+  }
 }
 @media (max-width: 1024px) {
-    .page-wrapper .header {
-        height: 64px;
-    }
+  .page-wrapper .header {
+    height: 64px;
+  }
+}
+@media (max-width: 768px) {
+  .page-wrapper .header {
+    height: 64px;
+  }
 }
 @media (max-width: 375px) {
-    .page-wrapper .header {
-        height: 48px;
-    }
+  .page-wrapper .header {
+    height: 48px;
+  }
 }
 .page-wrapper .header .logo {
-    display: flex;
-    text-decoration: none;
-    background-color: #382A2C;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
+  display: flex;
+  text-decoration: none;
+  background-color: #382A2C;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
 }
 @media (min-width: 1280px) {
-    .page-wrapper .header .logo {
-        width: 80px;
-    }
+  .page-wrapper .header .logo {
+    width: 80px;
+  }
 }
 @media (max-width: 1280px) {
-    .page-wrapper .header .logo {
-        width: 80px;
-    }
+  .page-wrapper .header .logo {
+    width: 80px;
+  }
 }
 @media (max-width: 1024px) {
-    .page-wrapper .header .logo {
-        width: 64px;
-    }
+  .page-wrapper .header .logo {
+    width: 64px;
+  }
 }
 @media (max-width: 375px) {
-    .page-wrapper .header .logo {
-        width: 48px;
-    }
+  .page-wrapper .header .logo {
+    width: 48px;
+  }
 }
 .page-wrapper .header .logo .logo-svg {
-    height: auto;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
-}
-@media (min-width: 1280px) {
-    .page-wrapper .header .logo .logo-svg {
-        width: 47.8px;
-    }
-}
-@media (max-width: 1280px) {
-    .page-wrapper .header .logo .logo-svg {
-        width: 47.8px;
-    }
-}
-@media (max-width: 1024px) {
-    .page-wrapper .header .logo .logo-svg {
-        width: 38.2px;
-    }
-}
-@media (max-width: 375px) {
-    .page-wrapper .header .logo .logo-svg {
-        width: 28.7px;
-    }
+  width: 100%;
+  height: auto;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
 }
 .page-wrapper .header .get-card-btn {
-    display: flex;
-    text-decoration: none;
-    background-color: #382A2C;
-    color: #FFFFFF;
-    font-style: normal;
-    justify-content: center;
-    align-items: center;
-    padding: 0 16px;
-    border-radius: 99px;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear, font-size 250ms linear;
+  display: flex;
+  text-decoration: none;
+  background-color: #382A2C;
+  color: #FFFFFF;
+  font-style: normal;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 99px;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear, font-size 250ms linear;
 }
 .page-wrapper .header .get-card-btn:hover,
 .page-wrapper .header .get-card-btn:focus {
-    background-color: #32A03D;
+  background-color: #32A03D;
 }
 @media (min-width: 1280px) {
-    .page-wrapper .header .get-card-btn {
-        height: 48px;
-        margin-right: 32px;
-        font-size: 16px;
-    }
+  .page-wrapper .header .get-card-btn {
+    height: 48px;
+    margin-right: 32px;
+    font-size: 16px;
+  }
 }
 @media (max-width: 1280px) {
-    .page-wrapper .header .get-card-btn {
-        height: 48px;
-        margin-right: 32px;
-        font-size: 16px;
-    }
+  .page-wrapper .header .get-card-btn {
+    height: 48px;
+    margin-right: 32px;
+    font-size: 16px;
+  }
 }
 @media (max-width: 1024px) {
-    .page-wrapper .header .get-card-btn {
-        height: 40px;
-        margin-right: 32px;
-    }
+  .page-wrapper .header .get-card-btn {
+    height: 40px;
+    margin-right: 32px;
+  }
 }
 @media (max-width: 375px) {
-    .page-wrapper .header .get-card-btn {
-        height: 32px;
-        margin-right: 16px;
-        font-size: 14px;
-    }
+  .page-wrapper .header .get-card-btn {
+    height: 32px;
+    margin-right: 16px;
+    font-size: 14px;
+  }
 }
 .page-wrapper .dialog {
-    position: relative;
-    max-width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 4px 64px #D4C8BF;
-    border-radius: 16px 16px 0 0;
-    padding: 16px;
-    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), rgba(255, 255, 255, 0.5);
-    color: #382A2C;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
-    /*
-          Displaying the ID of the wallet depending on the type. (in [:after] )
-      */
+  position: relative;
+  max-width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 64px #D4C8BF;
+  border-radius: 16px 16px 0 0;
+  padding: 16px;
+  background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), rgba(255, 255, 255, 0.5);
+  color: #382A2C;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
+  /*
+        Displaying (in [:after] ) the ID of the wallet depending on the type.
+    */
 }
 @media (min-width: 1280px) {
-    .page-wrapper .dialog {
-        padding: 56px;
-    }
+  .page-wrapper .dialog {
+    width: 480px;
+    padding: 56px;
+  }
 }
 @media (max-width: 1280px) {
-    .page-wrapper .dialog {
-        padding: 48px;
-    }
+  .page-wrapper .dialog {
+    width: 448px;
+    padding: 48px;
+  }
 }
 @media (max-width: 1024px) {
-    .page-wrapper .dialog {
-        padding: 40px;
-    }
+  .page-wrapper .dialog {
+    width: 360px;
+    padding: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .page-wrapper .dialog {
+    width: 360px;
+    padding: 40px;
+  }
 }
 @media (max-width: 375px) {
-    .page-wrapper .dialog {
-        padding: 32px 25px;
-    }
+  .page-wrapper .dialog {
+    width: 343px;
+    padding: 32px 25px;
+    max-width: 90%;
+  }
 }
 @media (max-width: 320px) {
-    .page-wrapper .dialog {
-        width: 100%;
-        height: 100%;
-        box-shadow: none;
-        border-radius: 0;
-    }
-}
-.page-wrapper .dialog .headline {
-    font-family: 'Muli', sans-serif;
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.5em;
-    line-height: 1.25;
-    padding: 0;
-    margin: 0;
-    transition: font-size 250ms linear;
-}
-@media (min-width: 1280px) {
-    .page-wrapper .dialog .headline {
-        font-size: 32px;
-    }
-}
-.page-wrapper .dialog #walletIdentifier {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: auto;
+  .page-wrapper .dialog {
     max-width: 100%;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
-}
-.page-wrapper .dialog #walletIdentifier span {
-    opacity: 0.5;
-    line-height: 1.25;
-    transition: font-size 250ms linear;
-}
-.page-wrapper .dialog #walletIdentifier span:first-child {
-    word-wrap: break-word;
-    max-width: 100%;
-}
-@media (min-width: 1280px) {
-    .page-wrapper .dialog #walletIdentifier {
-        padding: 32px 0 24px;
-        max-width: 368px;
-    }
-}
-@media (max-width: 1280px) {
-    .page-wrapper .dialog #walletIdentifier {
-        padding: 32px 0 24px;
-        max-width: 352px;
-    }
-}
-@media (max-width: 1024px) {
-    .page-wrapper .dialog #walletIdentifier {
-        padding: 24px 0;
-        max-width: 280px;
-    }
-}
-@media (max-width: 375px) {
-    .page-wrapper .dialog #walletIdentifier {
-        padding: 24px 7px;
-    }
-}
-@media (max-width: 320px) {
-    .page-wrapper .dialog #walletIdentifier {
-        padding: 24px 7px;
-    }
-}
-.page-wrapper .dialog #qrCode {
-    height: 160px;
-    width: 160px;
-    margin: 0;
-    background: #FFFFFF;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
-}
-@media (min-width: 1280px) {
-    .page-wrapper .dialog #qrCode {
-        height: 192px;
-        width: 192px;
-    }
-}
-@media (max-width: 1280px) {
-    .page-wrapper .dialog #qrCode {
-        height: 192px;
-        width: 192px;
-    }
-}
-@media (max-width: 1024px) {
-    .page-wrapper .dialog #qrCode {
-        height: 164px;
-        width: 164px;
-    }
-}
-@media (max-width: 375px) {
-    .page-wrapper .dialog #qrCode {
-        height: 160px;
-        width: 160px;
-    }
-}
-.page-wrapper .dialog #qrCode img {
     width: 100%;
     height: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
 }
-
-.page-wrapper .dialog .amount-wrapper {
-    word-spacing: 3px;
-    padding: 24px 0;
-    transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
+.page-wrapper .dialog .headline {
+  font-family: 'Muli', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.25;
+  padding: 0;
+  margin: 0;
+  transition: font-size 250ms linear;
 }
 @media (min-width: 1280px) {
-    .page-wrapper .dialog .amount-wrapper {
-        padding: 32px 0;
-    }
+  .page-wrapper .dialog .headline {
+    font-size: 32px;
+  }
 }
 @media (max-width: 1280px) {
-    .page-wrapper .dialog .amount-wrapper {
-        padding: 32px 0;
-    }
+  .page-wrapper .dialog .headline {
+    font-size: 32px;
+  }
 }
 @media (max-width: 1024px) {
-    .page-wrapper .dialog .amount-wrapper {
-        padding: 24px 0;
-    }
+  .page-wrapper .dialog .headline {
+    font-size: 1.5em;
+  }
+}
+.page-wrapper .dialog #walletIdentifier {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: auto;
+  max-width: 100%;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
+}
+.page-wrapper .dialog #walletIdentifier span {
+  opacity: 0.5;
+  line-height: 1.25;
+  transition: font-size 250ms linear;
+  word-wrap: break-word;
+  max-width: 100%;
+  padding: 0;
+}
+@media (min-width: 1280px) {
+  .page-wrapper .dialog #walletIdentifier {
+    padding: 32px 0 24px;
+    max-width: 368px;
+  }
+  .page-wrapper .dialog #walletIdentifier span {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 1280px) {
+  .page-wrapper .dialog #walletIdentifier {
+    padding: 32px 0 24px;
+    max-width: 352px;
+  }
+  .page-wrapper .dialog #walletIdentifier span {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 1024px) {
+  .page-wrapper .dialog #walletIdentifier {
+    padding: 24px 0;
+    max-width: 280px;
+  }
+  .page-wrapper .dialog #walletIdentifier span {
+    font-size: 12px;
+  }
+}
+@media (max-width: 375px) {
+  .page-wrapper .dialog #walletIdentifier {
+    padding: 24px 7px;
+  }
+}
+@media (max-width: 320px) {
+  .page-wrapper .dialog #walletIdentifier {
+    padding: 24px 7px;
+  }
+}
+.page-wrapper .dialog #qrCode {
+  height: 160px;
+  width: 160px;
+  margin: 0;
+  background: #FFFFFF;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
+}
+@media (min-width: 1280px) {
+  .page-wrapper .dialog #qrCode {
+    height: 192px;
+    width: 192px;
+  }
+}
+@media (max-width: 1280px) {
+  .page-wrapper .dialog #qrCode {
+    height: 192px;
+    width: 192px;
+  }
+}
+@media (max-width: 1024px) {
+  .page-wrapper .dialog #qrCode {
+    height: 164px;
+    width: 164px;
+  }
+}
+@media (max-width: 375px) {
+  .page-wrapper .dialog #qrCode {
+    height: 160px;
+    width: 160px;
+  }
+}
+.page-wrapper .dialog #qrCode img {
+  width: 100%;
+  height: 100%;
+}
+/*.page-wrapper .dialog #qrCode .dummy-qr-code {*/
+  /*background: url('qr-code-example.png') no-repeat;*/
+  /*background-size: cover;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+/*}*/
+.page-wrapper .dialog .amount-wrapper {
+  word-spacing: 3px;
+  padding: 24px 0;
+  transition: width 250ms linear, height 250ms linear, padding 250ms linear, margin 250ms linear;
+}
+@media (min-width: 1280px) {
+  .page-wrapper .dialog .amount-wrapper {
+    padding: 32px 0;
+  }
+}
+@media (max-width: 1280px) {
+  .page-wrapper .dialog .amount-wrapper {
+    padding: 32px 0;
+  }
+}
+@media (max-width: 1024px) {
+  .page-wrapper .dialog .amount-wrapper {
+    padding: 24px 0;
+  }
 }
 .page-wrapper .dialog .amount-wrapper #amount {
-    font-family: 'Muli', sans-serif;
-    font-weight: bold;
-    line-height: 1.25;
-    transition: font-size 250ms linear;
+  font-family: 'Muli', sans-serif;
+  font-weight: bold;
+  line-height: 1.25;
+  transition: font-size 250ms linear;
+}
+.page-wrapper .dialog .amount-wrapper #amount:after {
+  font-size: medium;
+  font-family: inherit;
+  color: inherit;
 }
 @media (min-width: 1280px) {
-    .page-wrapper .dialog .amount-wrapper #amount {
-        font-size: 32px;
-    }
+  .page-wrapper .dialog .amount-wrapper #amount {
+    font-size: 32px;
+  }
 }
 @media (max-width: 1280px) {
-    .page-wrapper .dialog .amount-wrapper #amount {
-        font-size: 32px;
-    }
+  .page-wrapper .dialog .amount-wrapper #amount {
+    font-size: 32px;
+  }
 }
 @media (max-width: 1024px) {
-    .page-wrapper .dialog .amount-wrapper #amount {
-        font-size: 24px;
-    }
+  .page-wrapper .dialog .amount-wrapper #amount {
+    font-size: 24px;
+  }
 }
 .page-wrapper .dialog .store-btns-wrapper {
-    border-radius: 8px;
-    min-width: 80%;
-    display: flex;
-    align-content: center;
-    justify-content: space-around;
+  border-radius: 8px;
+  min-width: 80%;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
 }
 .page-wrapper .dialog .store-btns-wrapper a {
-    display: block;
-    height: 40px;
-    background-size: cover;
-    text-decoration: none;
+  display: block;
+  height: 40px;
+  background-size: cover;
+  text-decoration: none;
 }
 .page-wrapper .dialog .store-btns-wrapper a.app-store {
-    width: 120px;
-    background: url("appStore/normal.png") no-repeat;
-    margin-right: 16px;
+  width: 120px;
+  background: url("appStore/normal.svg") no-repeat;
+  margin-right: 16px;
 }
 .page-wrapper .dialog .store-btns-wrapper a.app-store:hover,
 .page-wrapper .dialog .store-btns-wrapper a.app-store:focus {
-    background: url("appStore/hover.png") no-repeat;
+  background: url("appStore/hover.svg") no-repeat;
 }
 .page-wrapper .dialog .store-btns-wrapper a.google-play {
-    width: 135px;
-    background: url("googlePlay/normal.png") no-repeat;
+  width: 135px;
+  background: url("googlePlay/normal.svg") no-repeat;
 }
 .page-wrapper .dialog .store-btns-wrapper a.google-play:hover,
 .page-wrapper .dialog .store-btns-wrapper a.google-play:focus {
-    background: url("googlePlay/hover.png") no-repeat;
+  background: url("googlePlay/hover.svg") no-repeat;
 }
 .page-wrapper .dialog .other-wallet-btn {
-    display: none;
-    color: #32A03D;
-    text-decoration: none;
-    border: 1px solid #32A03D;
-    border-radius: 4px;
-    padding: 9px;
-    margin-top: 24px;
-    text-align: center;
-    line-height: 1.25;
+  display: none;
+  color: #32A03D;
+  text-decoration: none;
+  border: 1px solid #32A03D;
+  border-radius: 4px;
+  padding: 9px;
+  margin-top: 24px;
+  text-align: center;
+  line-height: 1.25;
 }
 .page-wrapper .dialog .other-wallet-btn:hover,
 .page-wrapper .dialog .other-wallet-btn:focus {
-    color: #FFFFFF;
-    background-color: #32A03D;
-}
-.page-wrapper .dialog.eur #walletIdentifier span:not(:nth-child(1)) {
-    padding-left: 12px;
-}
-.page-wrapper .dialog.eur #walletIdentifier span:not(:nth-child(4)) {
-    padding-right: 12px;
+  color: #FFFFFF;
+  background-color: #32A03D;
 }
 .page-wrapper .dialog.eur #amount:after {
-    content: ' EUR';
-    font-size: medium;
-    font-family: inherit;
-    color: inherit;
-}
-.page-wrapper .dialog.btc #walletIdentifier span:first-child,
-.page-wrapper .dialog.eth #walletIdentifier span:first-child {
-    padding: 0;
-}
-.page-wrapper .dialog.btc #walletIdentifier span:not(:first-child),
-.page-wrapper .dialog.eth #walletIdentifier span:not(:first-child) {
-    display: none;
-}
-@media (min-width: 1280px) {
-    .page-wrapper .dialog.btc #walletIdentifier span,
-    .page-wrapper .dialog.eth #walletIdentifier span {
-        font-size: 14px;
-        line-height: 1.4;
-    }
-}
-@media (max-width: 1280px) {
-    .page-wrapper .dialog.btc #walletIdentifier span,
-    .page-wrapper .dialog.eth #walletIdentifier span {
-        font-size: 14px;
-        line-height: 1.4;
-    }
-}
-@media (max-width: 1024px) {
-    .page-wrapper .dialog.btc #walletIdentifier span,
-    .page-wrapper .dialog.eth #walletIdentifier span {
-        font-size: 12px;
-    }
+  content: ' EUR';
 }
 .page-wrapper .dialog.btc .other-wallet-btn,
 .page-wrapper .dialog.eth .other-wallet-btn {
-    display: block;
-}
-.page-wrapper .dialog.btc #amount:after,
-.page-wrapper .dialog.eth #amount:after {
-    font-size: medium;
-    font-family: inherit;
-    color: inherit;
+  display: block;
 }
 .page-wrapper .dialog.eth #amount:after {
-    content: ' ETH';
+  content: ' ETH';
 }
 .page-wrapper .dialog.btc #amount:after {
-    content: ' BTC';
+  content: ' BTC';
 }
 .page-wrapper .dialog .rectangles {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 16px;
-    margin-bottom: -8px;
-    background: url("rectangle.svg") repeat-x;
-    background-position: center;
-}
-
-
-/* The part after this comment should be added to less in https://github.com/danielkolesnik/sugi-payment-request */
-.page-wrapper .dialog #errorMessage {
-    display: none;
-}
-
-.page-wrapper .dialog.error > :not(#errorMessage) {
-    display: none;
-}
-
-.page-wrapper .dialog.error {
-    justify-content: center;
-}
-
-.page-wrapper .dialog.error #errorMessage {
-    display: block;
-    max-width: 328px;
-    color: rgba(255,8,0,0.84);
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.2em;
-    line-height: 2;
-}
-
-.page-wrapper .dialog.error img {
-    color: rgba(255,8,0,0.84);
-    width: 100px;
-    margin-top: -100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  margin-bottom: -8px;
+  background: url("rectangle.svg") repeat-x;
+  background-position: center;
 }
