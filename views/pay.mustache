@@ -15,22 +15,15 @@
 <body>
 <div class="page-wrapper">
     <header class="header">
-        <a class="logo" href="#"><img class="logo-svg" src="/Sugi-logo.svg" alt="Sugi logo."></a>
+        <a class="logo" href="#"><img class="logo-svg" src="/logo.svg" alt="Sugi logo."></a>
         <a class="get-card-btn btn-animated" href="#">Get Sugi Card</a>
     </header>
     <!-- some content on the page displayed depending on class e.g. eth | btc | eur -->
     <main class="dialog light {{currencyType}}">
-        <div id="errorMessage"><img src="/alert-box.svg" alt="Error"><p></p></div>
+        <div id="errorMessage"><img src="/alert-box.svg" alt="Error"><p>{{{errorMessage}}}</p></div>
         <h1 class="headline">Payment request</h1>
         <div id="walletIdentifier">
-            <span>
-            </span>
-            <span>
-            </span>
-            <span>
-            </span>
-            <span>
-            </span>
+            <span></span>
         </div>
         <div id="qrCode">
         </div>
@@ -66,20 +59,15 @@
                     errorOutput = 'It seems to be the wrong amount of "{{{currency}}}" in this request. Sorry, we can\'t provide payment of {{{amount}}} amount.';
                     break;
                 default:
-                    // errorOutput = 'Sorry, the service is now temporarily unavailable... At the moment, work on this is ongoing, and we will fix it soon.';
+                    errorOutput = 'Sorry, the service is now temporarily unavailable... At the moment, work on this is ongoing, and we will fix it soon.';
             }
             document.querySelector('#errorMessage p').innerText = errorOutput;
+            document.querySelector('#errorMessage').classList.add('active');
         } else {
             // add walletId on page
-            if ('{{{currencyType}}}' === 'eur') {
+            if ('{{{currencyType }}}' === 'eur') {
                 document.querySelector('#walletIdentifier')
-                        .getElementsByTagName('span')[0].innerText = '{{{walletId}}}'.slice(0, 4);
-                document.querySelector('#walletIdentifier')
-                        .getElementsByTagName('span')[1].innerText = '{{{walletId}}}'.slice(4, 8);
-                document.querySelector('#walletIdentifier')
-                        .getElementsByTagName('span')[2].innerText = '{{{walletId}}}'.slice(8, 12);
-                document.querySelector('#walletIdentifier')
-                        .getElementsByTagName('span')[3].innerText = '{{{walletId}}}'.slice(12, 16);
+                        .getElementsByTagName('span')[0].innerText = '{{{walletId}}}'.slice(0, 4) + ' ' + '{{{walletId}}}'.slice(4, 8) + ' ' + '{{{walletId}}}'.slice(8, 12) + ' ' + '{{{walletId}}}'.slice(12, 16);
             } else {
                 document.querySelector('#walletIdentifier').getElementsByTagName('span')[0].innerText = '{{{walletId}}}';
             }
@@ -94,7 +82,7 @@
                 text: linkToOtherWallet,
                 width: 480,
                 height: 480,
-                colorDark: "#000000",
+                colorDark: "#382A2C",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
