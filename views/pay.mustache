@@ -20,8 +20,13 @@
     </header>
     <!-- some content on the page displayed depending on class e.g. eth | btc | eur -->
     <main class="dialog light {{currencyType}}">
-        <div id="errorMessage"><img src="/alert-box.svg" alt="Error"><p>{{{errorMessage}}}</p></div>
         <h1 class="headline">Payment request</h1>
+        <div id="errorMessage">
+            <img src="/alert-box.svg" alt="Error">
+            <p>{{{errorMessage}}}</p>
+        </div>
+        <noscript>
+            <img src="/alert-box.svg" alt="Error"><p>Enable JavaScript in your Browser -> Settings for better performance.</p></noscript>
         <div id="walletIdentifier">
             <span></span>
         </div>
@@ -43,7 +48,7 @@
     </main>
 </div>
 
-<!--<script type="text/javascript" src="script.js"></script>-->
+
 <script type="text/javascript" src="/qrcode.min.js"></script>
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function (event) {
